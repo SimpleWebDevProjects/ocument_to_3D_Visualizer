@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Document Mind Mapper</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://unpkg.com/compromise@14.5.0/builds/compromise.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>3D Document Mind Mapper</h1>
+            <p class="subtitle">Transform your text documents into interactive 3D knowledge graphs. Visualize concepts and relationships in an immersive VR-ready environment.</p>
+        </header>
+
+        <div class="main-content">
+            <div class="input-panel">
+                <h2><i class="fas fa-file-alt"></i> Document Input</h2>
+
+                <div class="input-group">
+                    <label for="document-input">Paste your text or upload a document:</label>
+                    <textarea id="document-input" placeholder="Enter text here or upload a file...">Artificial intelligence (AI) is intelligence demonstrated by machines, as opposed to natural intelligence displayed by animals including humans. Leading AI textbooks define the field as the study of intelligent agents: any system that perceives its environment and takes actions that maximize its chance of achieving its goals. AI applications include advanced web search engines, recommendation systems, understanding human speech, self-driving cars, automated decision-making, and competing at the highest level in strategic game systems. The field was founded on the assumption that human intelligence can be so precisely described that a machine can be made to simulate it.</textarea>
+                </div>
+
+                <div class="btn-group">
+                    <button id="process-btn">
+                        <i class="fas fa-brain"></i> Generate Mind Map
+                    </button>
+                    <button class="secondary" id="sample-btn">
+                        <i class="fas fa-lightbulb"></i> Load Sample
+                    </button>
+                </div>
+
+                <div class="input-group" style="margin-top: 30px;">
+                    <h2><i class="fas fa-sliders-h"></i> Visualization Settings</h2>
+
+                    <label for="node-size">Node Size</label>
+                    <input type="range" id="node-size" min="0.5" max="3" step="0.1" value="1.5">
+
+                    <label for="link-distance">Link Distance</label>
+                    <input type="range" id="link-distance" min="10" max="100" step="1" value="40">
+
+                    <label for="rotation-speed">Rotation Speed</label>
+                    <input type="range" id="rotation-speed" min="0" max="2" step="0.1" value="0.5">
+                </div>
+            </div>
+
+            <div class="visualization">
+                <div id="graph-container"></div>
+                <div class="graph-stats">
+                    <p>Nodes: <span id="node-count">0</span></p>
+                    <p>Links: <span id="link-count">0</span></p>
+                </div>
+                <div class="node-info" id="node-info"></div>
+                <div class="vr-indicator" id="vr-indicator">
+                    <i class="fas fa-vr-cardboard"></i>
+                    <span>Device Orientation: OFF</span>
+                </div>
+                <div class="controls">
+                    <div class="control-btn" id="reset-view">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <div class="control-btn" id="toggle-vr">
+                        <i class="fas fa-vr-cardboard"></i>
+                    </div>
+                    <div class="control-btn" id="screenshot">
+                        <i class="fas fa-camera"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="info-btn" id="info-btn">
+        <i class="fas fa-info"></i>
+    </div>
+
+    <div class="modal" id="info-modal">
+        <div class="modal-content">
+            <div class="close-btn" id="close-modal">
+                <i class="fas fa-times"></i>
+            </div>
+            <h2>About 3D Document Mind Mapper</h2>
+            <p>This interactive tool transforms text documents into immersive 3D knowledge graphs using natural language processing and force-directed layouts.</p>
+
+            <h3>Key Features:</h3>
+            <ul class="feature-list">
+                <li><strong>NLP-powered keyword extraction</strong> using compromise.js</li>
+                <li><strong>Interactive 3D force-directed graph</strong> visualization</li>
+                <li><strong>VR-style navigation</strong> using Device Orientation API</li>
+                <li>Full 3D environment with dynamic camera controls</li>
+                <li>Real-time graph manipulation and customization</li>
+                <li>Local file processing - your data never leaves your device</li>
+            </ul>
+
+            <p>The application uses Three.js for 3D rendering and WebGL for hardware acceleration, providing a smooth experience even with complex documents.</p>
+
+            <div class="author-info">
+                <h3>About the Developer</h3>
+                <p><strong>Name:</strong> Ayush Dubey</p>
+                <p><strong>GitHub:</strong> <a href="https://github.com/AyushDubey23" target="_blank" style="color: #64b5f6;">github.com/AyushDubey23</a></p>
+                <p><strong>Portfolio:</strong> <a href="https://ayushdubey23.github.io/mpw" target="_blank" style="color: #64b5f6;">ayushdubey23.github.io/mpw</a></p>
+
+                <div class="author-links">
+                    <a href="https://github.com/AyushDubey23" target="_blank" class="author-link">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
+                    <a href="https://ayushdubey23.github.io/mpw" target="_blank" class="author-link">
+                        <i class="fas fa-globe"></i> Portfolio
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
